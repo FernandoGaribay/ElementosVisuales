@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">ElementosVisualesTarea</string>
+
+    <string name="nombre_alumno">Fernando Garibay Ceja</string>
+    <string name="registro_alumno">21310414</string>
+    <string name="grupo_alumno">5M</string>
+
+    <string name="titulo">Encuesta de Solicitud de Empleo</string>
+
+    <string name="lblNombre">Nombre Completo:</string>
+    <string name="lblCorreo">Dirección de Correo Electrónico:</string>
+    <string name="lblTelefono">Número de Teléfono:</string>
+    <string name="lblPuesto">Puesto de Interés:</string>
+    <string name="lblExp">¿Tiene experiencia previa en el campo laboral?</string>
+    <string name="lblEducacion">¿Cuál es su nivel de educación más alto alcanzado?</string>
+    <string name="lblHabilidades">¿Cuáles son sus competencias relevantes para el puesto?</string>
+    <string name="lblDisponibilidad">¿Cuál es su disponibilidad para comenzar a trabajar?</string>
+    <string name="lblNoti">¿Deseas recibir notificaciones cuando se te responda a tu postulación?</string>
+    <string name="btnEnviar">Enviar Formulario</string>
+
+</resources>
