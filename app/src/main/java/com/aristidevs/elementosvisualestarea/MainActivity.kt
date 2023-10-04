@@ -8,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.Spinner
@@ -23,7 +24,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var puesto: AutoCompleteTextView
     private lateinit var radioSi: RadioButton
     private lateinit var radioNo: RadioButton
-    private lateinit var habilidades: EditText
+    private lateinit var algoritmos: CheckBox
+    private lateinit var estructurada: CheckBox
+    private lateinit var problemas: CheckBox
+    private lateinit var comunicacion: CheckBox
     private lateinit var disponibilidad: EditText
     private lateinit var notificaciones: ToggleButton
 
@@ -48,7 +52,10 @@ class MainActivity : AppCompatActivity() {
         puesto = findViewById(R.id.cpPuesto)
         radioSi = findViewById(R.id.radioOptionSi)
         radioNo = findViewById(R.id.radioOptionNo)
-        habilidades = findViewById(R.id.cpHabilidades)
+        algoritmos = findViewById(R.id.desAlgoritmos)
+        estructurada = findViewById(R.id.desEstructurada)
+        problemas = findViewById(R.id.desProblemas)
+        comunicacion = findViewById(R.id.desComunicacion)
         disponibilidad = findViewById(R.id.cpDisponibilidad)
         notificaciones = findViewById(R.id.toggleNotifi)
 
@@ -78,12 +85,17 @@ class MainActivity : AppCompatActivity() {
                     intent.putExtra("correo", correo.text.toString())
                     intent.putExtra("telefono", telefono.text.toString())
                     intent.putExtra("puesto", puesto.text.toString())
-                    intent.putExtra("habilidades", habilidades.text.toString())
                     intent.putExtra("disponibilidad", disponibilidad.text.toString())
                     intent.putExtra("radioSi", radioSi.isChecked)
                     intent.putExtra("radioNo", radioNo.isChecked)
                     intent.putExtra("notificaciones", notificaciones.isChecked)
-                    startActivity(intent)
+
+                    intent.putExtra("algoritmos", if (algoritmos.isChecked) algoritmos.text.toString() else "")
+                    intent.putExtra("estructurada", if (estructurada.isChecked) estructurada.text.toString() else "")
+                    intent.putExtra("problemas", if (problemas.isChecked) problemas.text.toString() else "")
+                    intent.putExtra("comunicacion", if (comunicacion.isChecked) comunicacion.text.toString() else "")
+
+                startActivity(intent)
             }
         }
     }
@@ -105,7 +117,6 @@ class MainActivity : AppCompatActivity() {
         spinnerEducacion.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
-
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -115,17 +126,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun camposVacios(): Boolean {
-        if (nombre.text.isBlank() ||
+        /*if (nombre.text.isBlank() ||
             correo.text.isBlank() ||
             telefono.text.isBlank() ||
             puesto.text.isBlank() ||
-            habilidades.text.isBlank() ||
             disponibilidad.text.isBlank()
         ) {
             return true
         }
 
         if (!radioSi.isChecked && !radioNo.isChecked) {
+            return true
+        }*/
+
+        if (!(algoritmos.isChecked || estructurada.isChecked || problemas.isChecked || comunicacion.isChecked)) {
             return true
         }
 
